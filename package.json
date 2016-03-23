@@ -1,0 +1,26 @@
+{
+  "name": "react-redux-firebase-chat",
+  "version": "1.0.0",
+  "description": "An amazing chat app created with react, redux and firebase",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "firebase",
+    "chat",
+    "babel",
+    "webpack",
+    "es6",
+    "javascript",
+    "webapp"
+  ],
+  "author": "Pooria",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^0.14.7",
+    "redux": "^3.3.1"
+  }
+}
