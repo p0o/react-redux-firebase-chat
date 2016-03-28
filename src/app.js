@@ -1,2 +1,2 @@
-require('../styles/index.css');
+require('../styles/index.scss');
 document.write(require('./test'));
