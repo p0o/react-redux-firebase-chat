@@ -1,5 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { firebaseConfig } from 'config';
+
+// Initialize Firebase
+if (window.firebase) {
+  firebase.initializeApp(config);
+}
 
 var HelloMessage = React.createClass({
   render: function() {
