@@ -4,7 +4,7 @@
   "description": "An amazing chat app created with react, redux and firebase",
   "main": "src/app.js",
   "scripts": {
-    "watch": "webpack-dev-server",
+    "watch": "webpack-dev-server --hot --inline --content-base build/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
