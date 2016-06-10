@@ -14,13 +14,28 @@ class App extends Component {
     };
   }
 
-  componentDidMount() {
-    this.setState({ name: this.props.name });
+  handleSignin() {
+    const provider = new firebase.auth.FacebookAuthProvider();
+    provider.addScope('email');
+
+    firebase.auth().signInWithPopup(provider).then((result) => {
+      const { accessToken } = result.credential;
+      const { user } = result;
+      this.setState({ name: user.displayName });
+    }).catch((error) => {
+      console.log(error.message);
+    });
   }
 
   render() {
-    return <div>Hello { this.state.name }</div>;
+    const { name } = this.state;
+    return (
+      <div>
+        <div>{ name? `Hello ${ name }`: '' }</div>
+        <p><a href="#" onClick={ () => this.handleSignin() }>Sign in here</a></p>
+      </div>
+    );
   }
 }
 
-ReactDOM.render(<App name="Janny" />, document.querySelector("#react-container"));
+ReactDOM.render(<App />, document.querySelector("#react-container"));
