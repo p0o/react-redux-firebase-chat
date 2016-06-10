@@ -1,16 +1,26 @@
-import React from "react";
+import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import { firebaseConfig } from 'config';
+import { firebaseConfig } from './config';
 
-// Initialize Firebase
 if (window.firebase) {
-  firebase.initializeApp(config);
+  firebase.initializeApp(firebaseConfig);
 }
 
-var HelloMessage = React.createClass({
-  render: function() {
-    return <div>Hello { this.props.name }</div>;
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: ''
+    };
   }
-});
 
-ReactDOM.render(<HelloMessage name="Pooria" />, document.querySelector("#react-container"));
+  componentDidMount() {
+    this.setState({ name: this.props.name });
+  }
+
+  render() {
+    return <div>Hello { this.state.name }</div>;
+  }
+}
+
+ReactDOM.render(<App name="Janny" />, document.querySelector("#react-container"));
