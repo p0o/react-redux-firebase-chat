@@ -1,11 +1,6 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import { createStore } from 'redux';
-import { firebaseConfig } from './../config';
 
-if (window.firebase) {
-  firebase.initializeApp(firebaseConfig);
-}
 
 class App extends Component {
   constructor(props) {
