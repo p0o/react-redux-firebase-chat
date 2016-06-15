@@ -1,6 +1,6 @@
 import { render } from 'react-dom';
 import reducer from './reducers';
-import { Provider } from 'redux-react';
+import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { firebaseConfig } from './config';
 
