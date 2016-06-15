@@ -3,7 +3,7 @@ var path = require('path');
 var isDevelopment = process.env.NODE_ENV === "development";
 
 module.exports = {
-  entry: './src/App.js',
+  entry: './src/index.js',
   devtool: isDevelopment ? 'cheap-eval-source-map': 'sourcemap',
   output: {
     path: path.join(__dirname, '/build'),

@@ -2,7 +2,7 @@
   "name": "react-redux-firebase-chat",
   "version": "1.0.0",
   "description": "An amazing chat app created with react, redux and firebase",
-  "main": "src/app.js",
+  "main": "src/index.js",
   "scripts": {
     "watch": "NODE_ENV=devlopment webpack-dev-server --hot --inline --content-base build/",
     "test": "echo \"Error: no test specified\" && exit 1"
