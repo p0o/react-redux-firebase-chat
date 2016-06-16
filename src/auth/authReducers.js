@@ -5,7 +5,7 @@ export default function users(state = {}, action) {
       return {
         id,
         name
-      }
+      };
     default:
       return state;
   }
