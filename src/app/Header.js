@@ -15,7 +15,7 @@ export class Header extends Component {
 
 const mapStateToProps = state => {
   return {
-    currentUser: state.currentUser,
+    auth: state.auth,
     users: state.users
   }
 };

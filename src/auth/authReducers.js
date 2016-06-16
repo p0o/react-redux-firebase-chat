@@ -1,6 +1,11 @@
-export default function users(state = {}, action) {
+const initialState = {
+  id: 0,
+  name: ''
+};
+
+export function auth(state = {}, action) {
   switch(action.type) {
-    case 'USER_SIGNED_IN':
+    case 'SIGNIN_SUCCESS':
       const { id, name } = action;
       return {
         id,
