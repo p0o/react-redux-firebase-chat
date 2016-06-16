@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SignInButton from '../components/SignInButton';
+import SignInButton from '../auth/SignInButton';
 
 export default class Header extends Component {
   render() {

@@ -8,7 +8,7 @@ export default class SigninButton extends Component {
     firebase.auth().signInWithPopup(provider).then((result) => {
       const { accessToken } = result.credential;
       const { user } = result;
-      this.setState({ name: user.displayName });
+      console.log(user);
     }).catch((error) => {
       console.log(error.message);
     });
