@@ -5,9 +5,10 @@ import SignInButton from '../auth/SignInButton';
 
 export class Header extends Component {
   render() {
+    const { onSignInClick } = this.props;
     return (
       <div>
-        <SignInButton />
+        <SignInButton onSignInClick={ onSignInClick } />
       </div>
     );
   }
@@ -22,7 +23,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSignInClick: authActions.signInUser()
+    onSignInClick: authActions.signInUser
   }
 };
 

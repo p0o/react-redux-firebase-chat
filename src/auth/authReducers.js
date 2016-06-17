@@ -1,15 +1,10 @@
-const initialState = {
-  id: 0,
-  name: ''
-};
 
 export function auth(state = {}, action) {
   switch(action.type) {
     case 'SIGNIN_SUCCESS':
-      const { id, name } = action;
+      const { userId } = action;
       return {
-        id,
-        name
+        userId
       };
     default:
       return state;

@@ -23,7 +23,7 @@ function signInError(errorMessage) {
 }
 
 export function signInUser() {
-  return dispatch => {
+  return (dispatch) => {
     const provider = new firebase.auth.FacebookAuthProvider();
     provider.addScope('email');
 
