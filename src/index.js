@@ -5,15 +5,20 @@ import reducers from './app/reducers';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'thunk';
+import createLogger from 'redux-logger'
 import { firebaseConfig } from './config';
 
 if (window.firebase) {
   firebase.initializeApp(firebaseConfig);
 }
+const loggerMiddleware = createLogger();
 
 const store = createStore(
   reducers,
-  applyMiddleware(thunk)
+  applyMiddleware(
+    thunk,
+    loggerMiddleware
+  )
 );
 
 // Dispatch initialization action here
