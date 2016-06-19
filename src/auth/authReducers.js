@@ -2,6 +2,8 @@
 const initialState = {
   isUserSignedIn: false,
   isInProgress: false,
+  hasError: false,
+  errorMessage: '',
   uid: 0,
   displayName: ''
 };
@@ -16,6 +18,18 @@ export function auth(state = initialState, action) {
         isInProgress: false,
         uid,
         displayName
+      };
+    case 'SIGNIN':
+      return {
+        ...state,
+        isInProgress: true
+      };
+    case 'SIGIN_ERROR':
+      const { errorMessage } = action;
+      return {
+        ...state,
+        hasError: true,
+        errorMessage
       };
     default:
       return state;
