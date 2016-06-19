@@ -23,7 +23,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSignInClick: authActions.signInUser
+    onSignInClick: authActions.signIn
   }
 };
 
