@@ -5,10 +5,13 @@ import SignInButton from '../auth/SignInButton';
 
 export class Header extends Component {
   render() {
-    const { onSignInClick } = this.props;
+    const { onSignInClick, auth } = this.props;
     return (
       <div>
-        <SignInButton onSignInClick={ onSignInClick } />
+        { auth.isUserSignedIn ?
+            <p>Welcome { auth.displayName }</p> :
+            <SignInButton onSignInClick={ onSignInClick } auth={ auth }/>
+        }
       </div>
     );
   }
@@ -16,8 +19,7 @@ export class Header extends Component {
 
 const mapStateToProps = state => {
   return {
-    auth: state.auth,
-    users: state.users
+    auth: state.auth
   }
 };
 
