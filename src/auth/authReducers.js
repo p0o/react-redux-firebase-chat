@@ -1,10 +1,21 @@
 
-export function auth(state = {}, action) {
+const initialState = {
+  isUserSignedIn: false,
+  isInProgress: false,
+  uid: 0,
+  displayName: ''
+};
+
+export function auth(state = initialState, action) {
   switch(action.type) {
     case 'SIGNIN_SUCCESS':
-      const { userId } = action;
+      const { uid, displayName } = action;
       return {
-        userId
+        ...state,
+        isUserSignedIn: true,
+        isInProgress: false,
+        uid,
+        displayName
       };
     default:
       return state;
