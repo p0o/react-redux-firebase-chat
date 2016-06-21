@@ -1,10 +1,8 @@
-const SIGNIN_SUCCESS = 'SIGNIN_SUCCESS';
-const SIGNIN_ERROR = 'SIGNIN_ERROR';
-const SIGNIN_IN_PROGRESS = 'SIGNIN_IN_PROGRESS';
+import * as types from './authActionTypes';
 
 function signInSuccess(uid, displayName) {
   return {
-    type: SIGNIN_SUCCESS,
+    type: types.SIGNIN_SUCCESS,
     uid,
     displayName
   }
@@ -12,13 +10,13 @@ function signInSuccess(uid, displayName) {
 
 function signInInProgress() {
   return {
-    type: SIGNIN_IN_PROGRESS
+    type: types.SIGNIN
   }
 }
 
 function signInError(errorMessage) {
   return {
-    type: SIGNIN_ERROR,
+    type: types.SIGNIN_ERROR,
     errorMessage
   }
 }

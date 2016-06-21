@@ -1,3 +1,4 @@
+import * as types from './authActionTypes';
 
 const initialState = {
   isUserSignedIn: false,
@@ -10,7 +11,7 @@ const initialState = {
 
 export function auth(state = initialState, action) {
   switch(action.type) {
-    case 'SIGNIN_SUCCESS':
+    case types.SIGNIN_SUCCESS:
       const { uid, displayName } = action;
       return {
         ...state,
@@ -19,12 +20,12 @@ export function auth(state = initialState, action) {
         uid,
         displayName
       };
-    case 'SIGNIN':
+    case types.SIGNIN:
       return {
         ...state,
         isInProgress: true
       };
-    case 'SIGIN_ERROR':
+    case types.SIGIN_ERROR:
       const { errorMessage } = action;
       return {
         ...state,
