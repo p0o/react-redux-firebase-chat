@@ -15,4 +15,35 @@ describe('auth Reducers', function() {
       ).to.be(true);
     });
   });
+
+  describe('auth() - SIGNIN_SUCCESS', function() {
+    it('is expected to return an object', function() {
+      expect(
+        auth(undefined, {type: types.SIGNIN_SUCCESS})
+      ).to.be.an('object');
+    });
+    it('is expected to change the state of user to Signed in', function() {
+      expect(
+        auth(undefined, {type: types.SIGNIN_SUCCESS}).isUserSignedIn
+      ).to.be(true);
+    });
+    it('is expected to change the state of in progress to false', function() {
+      expect(
+        auth(undefined, {type: types.SIGNIN_SUCCESS}).isInProgress
+      ).to.be(false);
+    });
+    it('is expected to set the uid and displayName of state from action', function() {
+      const testUid = 123;
+      const testDisplayName = 'testName';
+
+      const result = auth(undefined, {
+        type: types.SIGNIN_SUCCESS,
+        uid: testUid,
+        displayName: testDisplayName
+      });
+
+      expect(result.uid).to.be(testUid);
+      expect(result.displayName).to.be(testDisplayName);
+    });
+  });
 });
