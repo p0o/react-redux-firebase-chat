@@ -46,4 +46,26 @@ describe('auth Reducers', function() {
       expect(result.displayName).to.be(testDisplayName);
     });
   });
+
+  describe('auth() - SIGNIN_ERROR', function() {
+    it('is expected to return an object', function() {
+      expect(
+        auth(undefined, {type: types.SIGNIN_ERROR})
+      ).to.be.an('object');
+    });
+    it('is expected to change hasError property to true', function() {
+      expect(
+        auth(undefined, {type: types.SIGNIN_ERROR}).hasError
+      ).to.be(true);
+    });
+    it('is expected to return the errorMessage from action', function() {
+      const testErrorMessage = 'I am an error!';
+      expect(
+        auth(undefined, {
+          type: types.SIGNIN_ERROR,
+          errorMessage: testErrorMessage
+        }).errorMessage
+      ).to.be(testErrorMessage);
+    });
+  });
 });
