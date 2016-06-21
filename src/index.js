@@ -8,17 +8,21 @@ import thunk from 'redux-thunk';
 import createLogger from 'redux-logger'
 import { firebaseConfig } from './config';
 
+
+const isDevelopment = process.env.NODE_ENV === 'development';
+
 if (window.firebase) {
   firebase.initializeApp(firebaseConfig);
 }
+
 const loggerMiddleware = createLogger();
+const reduxMiddlewares = isDevelopment ?
+  [thunk, loggerMiddleware]:
+  [thunk];
 
 const store = createStore(
   reducers,
-  applyMiddleware(
-    thunk,
-    loggerMiddleware
-  )
+  applyMiddleware.apply(undefined, reduxMiddlewares)
 );
 
 // Dispatch initialization action here
