@@ -25,7 +25,7 @@ export function auth(state = initialState, action) {
         ...state,
         isInProgress: true
       };
-    case types.SIGIN_ERROR:
+    case types.SIGNIN_ERROR:
       const { errorMessage } = action;
       return {
         ...state,
