@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "watch": "NODE_ENV=development webpack-dev-server --hot --inline --content-base build/",
-    "test": "mocha --watch ./src/*/*-spec.js"
+    "test": "mocha --watch --compilers js:babel-core/register ./src/*/*-spec.js"
   },
   "keywords": [
     "react",
