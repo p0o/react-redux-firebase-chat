@@ -18,6 +18,12 @@ module.exports = {
       {
         test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"
       }
+    ],
+    postLoaders: [
+      {
+        test: /\.js$/,
+        loader: 'transform?envify'
+      }
     ]
   }
 };
