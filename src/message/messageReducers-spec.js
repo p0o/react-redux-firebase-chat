@@ -45,5 +45,50 @@ describe('userMessages Reducer', function() {
       expect(result.items[0].message).to.be(testMessage);
       expect(result.items[0].createdAt).to.be(testCreatedAt);
     });
+    it('is expected to trigger isSending to true', function() {
+      expect(result.isSending).to.be(true);
+    });
+  });
+
+  describe(`userMessages() -  ${ types.SEND_MESSAGE_SUCCESS }`, function() {
+    it('is expected to return an object', function() {
+      expect(
+        userMessage(undefined, {
+          type: types.SEND_MESSAGE_SUCCESS
+        })
+      ).to.be.an('object');
+    });
+    it('is expected to trigger isSending to false', function() {
+      expect(
+        userMessage(undefined, {
+          type: types.SEND_MESSAGE_SUCCESS
+        }).isSending
+      ).to.be(false);
+    });
+  });
+
+  describe(`userMessages() -  ${ types.SEND_MESSAGE_ERROR }`, function() {
+    it('is expected to return an object', function() {
+      expect(userMessage(undefined, {
+        type: types.SEND_MESSAGE_ERROR
+      })).to.be.an('object');
+    });
+    it('is expected to trigger hasError to true', function() {
+      expect(userMessage(undefined, {
+        type: types.SEND_MESSAGE_ERROR
+      }).hasError).to.be(true);
+    });
+    it('is expected to add errorMessage to the state', function() {
+      const testErrorMessage = 'this is test error';
+      const errorState = userMessage(
+        undefined,
+        {
+          type: types.SEND_MESSAGE_ERROR,
+          errorMessage: testErrorMessage
+        }
+      );
+
+      expect(errorState.errorMessage).to.be(testErrorMessage);
+    });
   });
 });
