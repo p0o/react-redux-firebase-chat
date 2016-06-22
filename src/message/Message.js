@@ -4,11 +4,16 @@ import MessageInput from './MessageInput';
 
 export class Message extends Component {
   render() {
-    const { dispatch, userMessage } = this.props;
+    const { dispatch, userMessage, isUserSignedIn } = this.props;
 
     return (
       <div>
-        <MessageInput userMessage={ userMessage } dispatch={ dispatch } />
+        { isUserSignedIn &&
+            <MessageInput
+              userMessage={ userMessage }
+              dispatch={ dispatch }
+            />
+        }
       </div>
     );
   }
@@ -16,7 +21,8 @@ export class Message extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    userMessage: state.userMessage
+    userMessage: state.userMessage,
+    isUserSignedIn: state.auth.isUserSignedIn
   }
 };
 
