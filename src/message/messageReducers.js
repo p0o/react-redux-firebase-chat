@@ -36,7 +36,8 @@ export const userMessage = (state = userMessageInitialState, action) => {
     case types.SEND_MESSAGE_SUCCESS:
       return {
         ...state,
-        isSending: false
+        isSending: false,
+        hasError: false
       };
     case types.SEND_MESSAGE_ERROR:
       return {
