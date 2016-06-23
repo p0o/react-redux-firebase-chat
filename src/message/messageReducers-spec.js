@@ -1,4 +1,4 @@
-import { userMessage } from './messageReducers';
+import { userMessage, messages } from './messageReducers';
 import * as types from './messageActionTypes';
 import expect from 'expect.js';
 
@@ -89,6 +89,63 @@ describe('userMessages Reducer', function() {
       );
 
       expect(errorState.errorMessage).to.be(testErrorMessage);
+    });
+  });
+});
+
+describe('messages Reducer', function() {
+  describe(`messages() - ${ types.RETRIEVE_MESSAGE }`, function() {
+    it('is expected to return an array', function() {
+      expect(
+        messages(undefined, { type: types.RETRIEVE_MESSAGE })
+      ).to.be.an('array');
+    });
+    it('is expected to add the message and uid props as an object to array', function() {
+      const testUid = 123;
+      const testMessage = 'this is a test message';
+
+      const result = messages(
+        undefined,
+        {
+          type: types.RETRIEVE_MESSAGE,
+          message: testMessage,
+          uid: testUid
+        }
+      );
+
+      expect(result).to.have.length(1);
+      expect(result[0].message).to.be(testMessage);
+      expect(result[0].uid).to.be(testUid);
+
+    });
+    it('is expected to add the second message with keeping a previous state', function() {
+      const testUid = 123;
+      const testMessage = 'this is a test message';
+
+      const testUid2 = 123;
+      const testMessage2 = 'this is a test message';
+
+      const result = messages(
+        [
+          {
+            uid: testUid,
+            message: testMessage
+          }
+        ],
+        {
+          type: types.RETRIEVE_MESSAGE,
+          message: testMessage2,
+          uid: testUid2
+        }
+      );
+
+      expect(result).to.have.length(2);
+      expect(result[0].message).to.be(testMessage);
+      expect(result[0].uid).to.be(testUid);
+
+      expect(result[1].message).to.be(testMessage2);
+      expect(result[1].uid).to.be(testUid2);
+
     });
   });
 });
