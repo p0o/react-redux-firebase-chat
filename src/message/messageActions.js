@@ -1,5 +1,13 @@
 import * as types from './messageActionTypes';
 
+export const retrieveMessage = ({ uid, message }) => {
+  return {
+    type: types.RETRIEVE_MESSAGE,
+    uid,
+    message
+  }
+};
+
 export const sendMessageInProgress = (uid, message, createdAt) => {
   return {
     type: types.SEND_MESSAGE,
