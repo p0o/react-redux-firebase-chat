@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MessageInput from './MessageInput';
+import MessageList from './MessageList';
 
 export class Message extends Component {
   render() {
@@ -8,6 +9,7 @@ export class Message extends Component {
 
     return (
       <div>
+        <MessageList dispatch={ dispatch } />
         { isUserSignedIn &&
             <MessageInput
               userMessage={ userMessage }
