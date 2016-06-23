@@ -5,11 +5,14 @@ import MessageList from './MessageList';
 
 export class Message extends Component {
   render() {
-    const { dispatch, userMessage, isUserSignedIn } = this.props;
+    const { dispatch, userMessage, isUserSignedIn, messages } = this.props;
 
     return (
       <div>
-        <MessageList dispatch={ dispatch } />
+        <MessageList
+          dispatch={ dispatch }
+          messages={ messages }
+        />
         { isUserSignedIn &&
             <MessageInput
               userMessage={ userMessage }
@@ -24,7 +27,8 @@ export class Message extends Component {
 const mapStateToProps = (state) => {
   return {
     userMessage: state.userMessage,
-    isUserSignedIn: state.auth.isUserSignedIn
+    isUserSignedIn: state.auth.isUserSignedIn,
+    messages: state.messages
   }
 };
 
