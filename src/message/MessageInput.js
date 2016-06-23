@@ -11,6 +11,7 @@ export default ({ dispatch }) => {
       onKeyUp={ ({ keyCode }) => {
         if(keyCode === 13) {
           dispatch(sendMessage(myInput.value));
+          myInput.value = '';
         }
       } }
     />
