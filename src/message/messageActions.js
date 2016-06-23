@@ -26,7 +26,11 @@ export const sendMessage = (message) => {
     const { uid } = getState().auth;
     if (uid !== 0) {
       dispatch( sendMessageInProgress(uid, message, Date.now()) );
-      // TODO: add firebase stuff
+
+      firebase.database().ref('messages').push({
+        uid,
+        message
+      });
     } else {
       dispatch( sendMessageError() );
     }
