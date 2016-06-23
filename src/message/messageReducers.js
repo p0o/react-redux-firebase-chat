@@ -49,3 +49,20 @@ export const userMessage = (state = userMessageInitialState, action) => {
       return state;
   }
 };
+
+export const messages = (state = [], action) => {
+  switch(action.type) {
+    case types.RETRIEVE_MESSAGE:
+      const { uid, message } = action;
+
+      return [
+        ...state,
+        {
+          uid,
+          message
+        }
+      ];
+    default:
+      return state;
+  }
+};
