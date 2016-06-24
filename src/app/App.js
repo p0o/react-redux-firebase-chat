@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Header from './Header';
 import Message from './../message/Message';
+import Users from '.../user/Users';
 
 class App extends Component {
   render() {
@@ -8,7 +9,10 @@ class App extends Component {
       <div>
         <h1>React Redux Firebase Chat App</h1>
         <Header />
-        <Message />
+        <div style={{ display: 'flex' }}>
+          <Message />
+          <Users />
+        </div>
       </div>
     );
   }
