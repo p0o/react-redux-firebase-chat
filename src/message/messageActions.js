@@ -8,12 +8,11 @@ export const retrieveMessage = ({ uid, message }) => {
   }
 };
 
-export const sendMessageInProgress = (uid, message, createdAt) => {
+export const sendMessageInProgress = (uid, message) => {
   return {
     type: types.SEND_MESSAGE,
     uid,
-    message,
-    createdAt
+    message
   }
 };
 
@@ -33,11 +32,12 @@ export const sendMessage = (message) => {
   return (dispatch, getState) => {
     const { uid } = getState().auth;
     if (uid !== 0) {
-      dispatch( sendMessageInProgress(uid, message, Date.now()) );
+      dispatch( sendMessageInProgress(uid, message) );
 
       firebase.database().ref('messages').push({
         uid,
-        message
+        message,
+        createdAt: firebase.database.ServerValue.TIMESTAMP
       });
     } else {
       dispatch( sendMessageError() );
