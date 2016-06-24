@@ -1,11 +1,10 @@
 import * as types from './authActionTypes';
 import { authConfig } from './../config';
 
-function signInSuccess(uid, displayName) {
+function signInSuccess(uid) {
   return {
     type: types.SIGNIN_SUCCESS,
-    uid,
-    displayName
+    uid
   }
 }
 
@@ -31,8 +30,16 @@ export function signIn() {
 
     firebase.auth().signInWithPopup(provider)
       .then((result) => {
-        const { user } = result;
-        dispatch(signInSuccess(user.uid, user.displayName))
+        const { user: { uid, displayName, photoURL, email } } = result;
+
+        firebase.database().ref(`users/${ uid }`).set({
+          displayName,
+          photoURL,
+          email,
+          lastTimeLoggedIn: firebase.database.ServerValue.TIMESTAMP
+        });
+
+        dispatch(signInSuccess(uid));
       })
       .catch((error) => {
         dispatch(signInError(error.message))
