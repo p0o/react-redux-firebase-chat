@@ -34,16 +34,13 @@ describe('auth Reducers', function() {
     });
     it('is expected to set the uid and displayName of state from action', function() {
       const testUid = 123;
-      const testDisplayName = 'testName';
 
       const result = auth(undefined, {
         type: types.SIGNIN_SUCCESS,
-        uid: testUid,
-        displayName: testDisplayName
+        uid: testUid
       });
 
       expect(result.uid).to.be(testUid);
-      expect(result.displayName).to.be(testDisplayName);
     });
   });
 
