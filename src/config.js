@@ -5,3 +5,7 @@ export const firebaseConfig = {
   databaseURL: "https://react-redux-firebase-chat.firebaseio.com",
   storageBucket: "react-redux-firebase-chat.appspot.com"
 };
+
+export const authConfig = {
+  facebookPermissions: ['public_profile', 'email']
+};

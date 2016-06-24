@@ -1,4 +1,5 @@
 import * as types from './authActionTypes';
+import { authConfig } from './../config';
 
 function signInSuccess(uid, displayName) {
   return {
@@ -26,7 +27,7 @@ export function signIn() {
     dispatch(signInInProgress());
 
     const provider = new firebase.auth.FacebookAuthProvider();
-    provider.addScope('email');
+    authConfig.facebookPermissions.forEach(permission => provider.addScope(permission));
 
     firebase.auth().signInWithPopup(provider)
       .then((result) => {
