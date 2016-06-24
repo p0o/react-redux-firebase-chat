@@ -4,8 +4,13 @@ import UsersList from './UsersList';
 
 export class Users extends Component {
   render() {
+    const { dispatch, users } = this.props;
+
     return (
-      <UsersList />
+      <UsersList
+        dispatch={ dispatch }
+        users={ users }
+      />
     );
   }
 }

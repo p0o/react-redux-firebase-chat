@@ -13,9 +13,33 @@ export default class UsersList extends Component {
     });
   }
 
+  /**
+   * showUsersList(<OBJECT>)
+   *
+   * @param users - the users object with uid keys straight from state
+   * @return Array - an array of users objects with uid inside the objects to be used easily in JSX
+     */
+  showUsersList(users) {
+    if(!users) {
+      return [];
+    }
+
+    return Object.keys(users).reduce(
+      (list, nextItem) => {
+      list.pop({
+        uid,
+        ...users[nextItem]
+      });
+    }, []);
+  }
+
   render() {
+    const { users } = this.props;
+
     return (
-      <div>Hey!</div>
+      <ul>
+        { this.showUsersList(users).map(user => <li>{ user.displayName }</li>) }
+      </ul>
     );
   }
 }
