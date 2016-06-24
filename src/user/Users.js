@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import UsersList from './UsersList';
 
 export class Users extends Component {
   render() {
-    <div>Users here!</div>
+    return (
+      <UsersList />
+    );
   }
 }
 
