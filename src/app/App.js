@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Header from './Header';
 import Message from './../message/Message';
-import Users from '.../user/Users';
+import Users from '../user/Users';
 
 class App extends Component {
   render() {
