@@ -25,11 +25,14 @@ export default class UsersList extends Component {
     }
 
     return Object.keys(users).reduce(
-      (list, nextItem) => {
-      list.pop({
-        uid,
-        ...users[nextItem]
-      });
+      (list, uid) => {
+      return [
+        ...list,
+        {
+          uid,
+          ...users[uid]
+        }
+      ];
     }, []);
   }
 
