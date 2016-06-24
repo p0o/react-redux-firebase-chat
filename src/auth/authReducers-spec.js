@@ -32,7 +32,7 @@ describe('auth Reducers', function() {
         auth(undefined, {type: types.SIGNIN_SUCCESS}).isInProgress
       ).to.be(false);
     });
-    it('is expected to set the uid and displayName of state from action', function() {
+    it('is expected to set the uid of state from action', function() {
       const testUid = 123;
 
       const result = auth(undefined, {
