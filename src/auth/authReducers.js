@@ -12,12 +12,13 @@ const initialState = {
 export function auth(state = initialState, action) {
   switch(action.type) {
     case types.SIGNIN_SUCCESS:
-      const { uid } = action;
+      const { uid, displayName } = action;
       return {
         ...state,
         isUserSignedIn: true,
         isInProgress: false,
-        uid
+        uid,
+        displayName
       };
     case types.SIGNIN:
       return {

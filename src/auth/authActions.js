@@ -1,10 +1,11 @@
 import * as types from './authActionTypes';
 import { authConfig } from './../config';
 
-function signInSuccess(uid) {
+function signInSuccess({ uid, displayName }) {
   return {
     type: types.SIGNIN_SUCCESS,
-    uid
+    uid,
+    displayName
   }
 }
 
@@ -39,7 +40,9 @@ export function signIn() {
           lastTimeLoggedIn: firebase.database.ServerValue.TIMESTAMP
         });
 
-        dispatch(signInSuccess(uid));
+        dispatch(
+          signInSuccess({ uid, displayName })
+        );
       })
       .catch((error) => {
         dispatch(signInError(error.message))
