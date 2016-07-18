@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Header from './Header';
 import Message from './../message/Message';
 import Users from '../user/Users';
+import { Grid, Cell } from 'react-flexr';
+import 'react-flexr/styles.css';
 
 class App extends Component {
   render() {
@@ -9,10 +11,14 @@ class App extends Component {
       <div>
         <h1>React Redux Firebase Chat App</h1>
         <Header />
-        <div style={{ display: 'flex' }}>
-          <Message />
-          <Users />
-        </div>
+        <Grid>
+          <Cell size='8/12'>
+            <Message />
+          </Cell>
+          <Cell size='4/12'>
+            <Users />
+          </Cell>
+        </Grid>
       </div>
     );
   }
