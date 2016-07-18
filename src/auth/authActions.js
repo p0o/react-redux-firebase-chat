@@ -1,11 +1,10 @@
 import * as types from './authActionTypes';
 import { authConfig } from './../config';
 
-function signInSuccess({ uid, displayName }) {
+function signInSuccess(uid) {
   return {
     type: types.SIGNIN_SUCCESS,
-    uid,
-    displayName
+    uid
   }
 }
 
@@ -41,7 +40,7 @@ export function signIn() {
         });
 
         dispatch(
-          signInSuccess({ uid, displayName })
+          signInSuccess(uid)
         );
       })
       .catch((error) => {

@@ -5,20 +5,18 @@ const initialState = {
   isInProgress: false,
   hasError: false,
   errorMessage: '',
-  uid: 0,
-  displayName: ''
+  uid: 0
 };
 
 export function auth(state = initialState, action) {
   switch(action.type) {
     case types.SIGNIN_SUCCESS:
-      const { uid, displayName } = action;
+      const { uid } = action;
       return {
         ...state,
         isUserSignedIn: true,
         isInProgress: false,
-        uid,
-        displayName
+        uid
       };
     case types.SIGNIN:
       return {
