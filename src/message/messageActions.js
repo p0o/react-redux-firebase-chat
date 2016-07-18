@@ -4,6 +4,7 @@ export const retrieveMessage = ({ uid, displayName, message }) => {
   return {
     type: types.RETRIEVE_MESSAGE,
     uid,
+    displayName,
     message
   }
 };
