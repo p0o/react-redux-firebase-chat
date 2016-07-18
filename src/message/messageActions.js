@@ -29,7 +29,9 @@ export const sendMessageError = () => {
 
 export const sendMessage = (message) => {
   return (dispatch, getState) => {
-    const { uid, displayName } = getState().auth;
+    const { uid } = getState().auth;
+    const { displayName } = getState().users[uid];
+
     if (uid !== 0) {
       dispatch( sendMessageInProgress({ uid, displayName, message}) );
 
