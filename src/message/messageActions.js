@@ -1,6 +1,6 @@
 import * as types from './messageActionTypes';
 
-export const retrieveMessage = ({ uid, message }) => {
+export const retrieveMessage = ({ uid, displayName, message }) => {
   return {
     type: types.RETRIEVE_MESSAGE,
     uid,
@@ -8,11 +8,10 @@ export const retrieveMessage = ({ uid, message }) => {
   }
 };
 
-export const sendMessageInProgress = (uid, message) => {
+export const sendMessageInProgress = (payload) => {
   return {
     type: types.SEND_MESSAGE,
-    uid,
-    message
+    ...payload
   }
 };
 
@@ -30,12 +29,13 @@ export const sendMessageError = () => {
 
 export const sendMessage = (message) => {
   return (dispatch, getState) => {
-    const { uid } = getState().auth;
+    const { uid, displayName } = getState().auth;
     if (uid !== 0) {
-      dispatch( sendMessageInProgress(uid, message) );
+      dispatch( sendMessageInProgress({ uid, displayName, message}) );
 
       firebase.database().ref('messages').push({
         uid,
+        displayName,
         message,
         createdAt: firebase.database.ServerValue.TIMESTAMP
       });

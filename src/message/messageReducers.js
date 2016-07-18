@@ -3,11 +3,12 @@ import * as types from './messageActionTypes';
 export const userMessageItems = (state, action) => {
   switch(action.type) {
     case types.SEND_MESSAGE:
-      const { uid, message, createdAt } = action;
+      const { uid, displayName, message, createdAt } = action;
       return [
         ...state,
         {
           uid,
+          displayName,
           message,
           createdAt
         }
@@ -53,12 +54,13 @@ export const userMessage = (state = userMessageInitialState, action) => {
 export const messages = (state = [], action) => {
   switch(action.type) {
     case types.RETRIEVE_MESSAGE:
-      const { uid, message } = action;
+      const { uid, displayName, message } = action;
 
       return [
         ...state,
         {
           uid,
+          displayName,
           message
         }
       ];
