@@ -15,7 +15,7 @@ class App extends Component {
           <Cell size='8/12'>
             <Message />
           </Cell>
-          <Cell size='4/12'>
+          <Cell>
             <Users />
           </Cell>
         </Grid>
